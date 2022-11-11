@@ -1,6 +1,6 @@
 {
   "name": "@bearbar00008/elements_material_design",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "description": "A simple template for a custom React component library",
   "scripts": {
     "rollup": "rollup -c"
@@ -29,9 +29,9 @@
     "registry": "https://npm.pkg.github.com/Bearbar00008"
   },
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "styled-components": "^4.0.0"
+    "react": ">= 18",
+    "react-dom": ">= 18",
+    "styled-components": ">= 4"
   },
   "dependencies": {
   }
