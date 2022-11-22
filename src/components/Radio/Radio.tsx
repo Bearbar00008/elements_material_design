@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import React from 'react'
 import Ripple from './RippleAnimation'
-import { useState, useRef} from 'react'
+import React, { useState, useRef} from 'react'
 
 const RadioButtonElement = styled.div`
     display: flex;
 `
 
 interface RadioButtonType {
-    color?: string
+    sizeRadio?: "small" | "medium" | "large"
+    color?: string 
 }
 
 const RadioButton = styled.input<RadioButtonType>`
@@ -16,21 +16,39 @@ const RadioButton = styled.input<RadioButtonType>`
     appearance: none;
     margin: auto;
     outline: none;
-    width: 1vw;
-    height: 1vw;
     border: 0.15vw solid grey;
     border-radius: 50%;
     display: flex;
+
+    ${props => props.sizeRadio === "small" ?"width: 0.8vw; height: 0.8vw;" : ""}
+    ${props => props.sizeRadio === "medium" ?"width: 1vw; height: 1vw;" : ""}
+    ${props => props.sizeRadio === "large" ?"width: 1.2vw; height: 1.2vw;" : ""}
+
+    @media (max-width: 480px) {
+        ${props => props.sizeRadio === "small" ?"width: 3vw; height: 3vw;" : ""}
+        ${props => props.sizeRadio === "medium" ?"width: 3.5vw; height: 3.5vw;" : ""}
+        ${props => props.sizeRadio === "large" ?"width: 4vw; height: 4vw;" : ""}
+        border: 0.4vw solid grey;
+    }
+
     ::after {
         content: "";
         display: block;
         border-radius: 50%;
-        width: 0.5vw;
-        height: 0.5vw;
         margin: auto;
         transform: scale(0);
         transition: transform 0.2s ease-in-out;
         background-color: ${props => props.color};
+
+        ${props => props.sizeRadio === "small" ?"width: 0.3vw; height: 0.3vw;" : ""}
+        ${props => props.sizeRadio === "medium" ?"width: 0.45vw; height: 0.45vw;" : ""}
+        ${props => props.sizeRadio === "large" ?"width: 0.6vw; height: 0.6vw;" : ""}
+
+        @media (max-width: 480px) {
+            ${props => props.sizeRadio === "small" ?"width: 1.5vw; height: 1.5vw;" : ""}
+            ${props => props.sizeRadio === "medium" ?"width: 2vw; height: 2vw;" : ""}
+            ${props => props.sizeRadio === "large" ?"width: 2.3vw; height: 2.3vw;" : ""}
+        }
     }
     :checked {
         border-color: ${props => props.color};
@@ -57,10 +75,7 @@ interface RadioButtonLabelType{
     disabled?:boolean
 }
 const RadioButtonLabel = styled.label<RadioButtonLabelType>`
-    font-size: 0.938vw;
     color: ${ props => props.disabled ?'rgba(0,0,0,0.4)':'#1a2027'};
-    margin-left: 0.521vw !important;
-    margin-top: -0.15vw;
     ${ props => props.disabled ?'':'cursor: pointer;'};
     display: inline-block;
     text-transform: capitalize;
@@ -71,20 +86,48 @@ interface AnimationHoverType {
     isFocus: boolean
     disabled?: boolean
     color?: string
+    size?: "small" | "medium" | "large"
 }
 
 const AnimationHover = styled.span<AnimationHoverType>`
-    width: 2.2vw;
-    height: 2.2vw;
     border-radius: 50%;
     display: inline-flex;
     transition: background-color 0.1s;
     overflow: hidden;
     position: relative;
     ${props => props.isFocus ? `background-color: ${props.color}30;`:'' }
+
+    ${props => props.size === "small" ?"width: 2vw; height: 2vw;" : ""}
+    ${props => props.size === "medium" ?"width: 2.2vw; height: 2.2vw;" : ""}
+    ${props => props.size === "large" ?"width: 2.4vw; height: 2.4vw;" : ""}
+
     &:hover{
         ${props => props.disabled ? '' : `background-color: ${props.color}10;` }
-        
+    }
+
+    @media (max-width: 480px) {
+        ${props => props.size === "small" ?"width: 7vw; height: 7vw;" : ""}
+        ${props => props.size === "medium" ?"width: 7.5vw; height: 7.5vw;" : ""}
+        ${props => props.size === "large" ?"width: 8vw; height: 8vw;" : ""}
+    }
+`
+
+interface TextLabelType {
+    size?: "small" | "medium" | "large"
+}
+
+const TextLabel = styled.span<TextLabelType>`
+    font-family: Arial, sans-serif;
+    text-transform: capitalize;
+    display: inline-block;
+    ${props => props.size === "small" ?"font-size: 0.55vw;" : ""}
+    ${props => props.size === "medium" ?"font-size: 0.7vw;" : ""}
+    ${props => props.size === "large" ?"font-size: 0.8vw;" : ""}
+
+    @media (max-width: 480px) {
+        ${props => props.size === "small" ?"font-size: 3vw;" : ""}
+        ${props => props.size === "medium" ?"font-size: 3.5vw;" : ""}
+        ${props => props.size === "large" ?"font-size: 4vw" : ""}
     }
 `
 
@@ -99,14 +142,14 @@ interface RadioType {
     checked?: boolean
     disabled?: boolean
     color?: HEX
+    labelPosition?: 'left' | 'right'
+    size?: "small" | "medium" | "large"
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange, disabled, color = '#6200ee'}) =>{
+const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange, disabled, color = '#6200ee', labelPosition = 'right', size = 'medium'}) =>{
     const [isFocus, setIsFocus] = useState<boolean>(false)
     const inputRef = useRef<HTMLInputElement>(null)
-
-    console.log(color);
     
     const resetBlurHandler = () =>{
         inputRef.current!.blur()
@@ -120,11 +163,18 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                     disabled={disabled}
                     onClick = {resetBlurHandler} 
                 >
-
+                    {labelPosition === 'left' &&
+                        <TextLabel 
+                            size={size}
+                        >
+                            {label}
+                        </TextLabel>
+                     }
                     <AnimationHover 
                         isFocus ={isFocus}
                         disabled={disabled}
                         color={color}
+                        size={size}
                     >
                         <RadioButton 
                             ref = {inputRef}
@@ -136,6 +186,7 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                             checked={checked}
                             disabled={disabled}
                             color={color}
+                            sizeRadio={size}
                             onFocus = {() => setIsFocus(true) }
                             onBlur = {() => setIsFocus(false)}
                             onMouseUp ={() =>setIsFocus(false)}
@@ -145,7 +196,13 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                             <Ripple backgroundColor={color} />  
                         }
                     </AnimationHover>
-                    <span>{label}</span>
+                    {labelPosition === 'right' &&
+                        <TextLabel
+                            size={size}
+                        >
+                            {label}
+                        </TextLabel>
+                     }
                 </RadioButtonLabel>
             </RadioButtonElement>
     </>
