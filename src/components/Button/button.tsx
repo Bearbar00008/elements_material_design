@@ -131,11 +131,12 @@ const TextButton = styled.span<TextButton>`
    visibility: ${props => props.loadingPhase ? "hidden" : "visible"};
 `
 
+type HEX = `#${string}`
 
 interface ButtonElement {
     children: string 
-    color?: string 
-    backgroundColor?: string
+    color?: HEX 
+    backgroundColor?: HEX
     variant?: "text" | "contained" | "outlined"
     disable?: boolean
     disableElevation?: boolean

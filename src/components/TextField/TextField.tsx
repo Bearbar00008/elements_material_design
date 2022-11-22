@@ -333,6 +333,8 @@ const HelperMessage = styled.div<HelperMessage>`
     }
 `
 
+type HEX = `#${string}`
+
 interface TexField {
     label: string
     name: string
@@ -343,7 +345,7 @@ interface TexField {
     state?: "success" | "error"
     value?: string
     fullWidth?: boolean
-    color?: string
+    color?: HEX
     disabled?: boolean
     variant?: "standard" | "contained" | "outlined"
     size?: "small" | "normal"
@@ -372,8 +374,6 @@ const TextField: React.FC<TexField> = ({
     const [labelActive, setLabelActive] = useState<boolean>(false)
     const [hover, setHover] = useState<boolean>(false)
     const [valueLength, setValueLength] = useState<number>(0)
-
-    console.log(hover);
     
     
     useEffect(() => {
