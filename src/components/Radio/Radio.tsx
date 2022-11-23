@@ -28,7 +28,7 @@ const RadioButton = styled.input<RadioButtonType>`
         ${props => props.sizeRadio === "small" ?"width: 3vw; height: 3vw;" : ""}
         ${props => props.sizeRadio === "medium" ?"width: 3.5vw; height: 3.5vw;" : ""}
         ${props => props.sizeRadio === "large" ?"width: 4vw; height: 4vw;" : ""}
-        border: 0.4vw solid grey;
+        border: 0.4vw solid #808080;
     }
 
     ::after {
@@ -87,6 +87,7 @@ interface AnimationHoverType {
     disabled?: boolean
     color?: string
     size?: "small" | "medium" | "large"
+    checked?: boolean
 }
 
 const AnimationHover = styled.span<AnimationHoverType>`
@@ -102,7 +103,7 @@ const AnimationHover = styled.span<AnimationHoverType>`
     ${props => props.size === "large" ?"width: 2.4vw; height: 2.4vw;" : ""}
 
     &:hover{
-        ${props => props.disabled ? '' : `background-color: ${props.color}10;` }
+        ${props => props.disabled ? '' : props.checked ? `background-color: ${props.color}10;` : 'background-color:#80808020;'  }
     }
 
     @media (max-width: 480px) {
@@ -175,6 +176,7 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                         disabled={disabled}
                         color={color}
                         size={size}
+                        checked={checked}
                     >
                         <RadioButton 
                             ref = {inputRef}
