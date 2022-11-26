@@ -7,7 +7,7 @@ const RadioButtonElement = styled.div`
 `
 
 interface RadioButtonType {
-    sizeRadio?: "small" | "medium" | "large"
+    sizeRadio: "small" | "medium" | "large"
     color?: string 
 }
 
@@ -86,8 +86,8 @@ interface AnimationHoverType {
     isFocus: boolean
     disabled?: boolean
     color?: string
-    size?: "small" | "medium" | "large"
-    checked?: boolean
+    size: "small" | "medium" | "large"
+    checked: boolean
 }
 
 const AnimationHover = styled.span<AnimationHoverType>`
@@ -128,7 +128,7 @@ const TextLabel = styled.span<TextLabelType>`
     @media (max-width: 480px) {
         ${props => props.size === "small" ?"font-size: 3vw;" : ""}
         ${props => props.size === "medium" ?"font-size: 3.5vw;" : ""}
-        ${props => props.size === "large" ?"font-size: 4vw" : ""}
+        ${props => props.size === "large" ?"font-size: 4vw;" : ""}
     }
 `
 
@@ -138,14 +138,14 @@ type HEX = `#${string}`
 interface RadioType {
     label: string
     name: string
-    id: string
-    value?: string
-    checked?: boolean
+    id?: string
+    value: string
+    checked: string
     disabled?: boolean
     color?: HEX
     labelPosition?: 'left' | 'right'
     size?: "small" | "medium" | "large"
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange, disabled, color = '#6200ee', labelPosition = 'right', size = 'medium'}) =>{
@@ -156,6 +156,14 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
         inputRef.current!.blur()
     }
     
+    const checkedHandler = (checked: string ): boolean => {
+        
+        if( checked === value)
+            return true
+        return  false
+   }
+
+
     return(<>
             <RadioButtonElement>
 
@@ -176,7 +184,7 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                         disabled={disabled}
                         color={color}
                         size={size}
-                        checked={checked}
+                        checked={checkedHandler(checked)}
                     >
                         <RadioButton 
                             ref = {inputRef}
@@ -185,7 +193,7 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                             name={name}
                             value ={value}
                             onChange={onChange}
-                            checked={checked}
+                            checked={checkedHandler(checked)}
                             disabled={disabled}
                             color={color}
                             sizeRadio={size}

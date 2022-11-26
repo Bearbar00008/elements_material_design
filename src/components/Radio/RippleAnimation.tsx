@@ -1,6 +1,5 @@
 import styled from "styled-components"
-import React from "react";
-import { useState, MouseEvent } from "react";
+import React, { useState, MouseEvent } from "react";
 
 interface Animation {
     backgroundColor: string
@@ -18,7 +17,7 @@ const Animation = styled.div<Animation>`
         border-radius: 100%;
         position: absolute;
         opacity: 0.6;
-        background-color: ${props => props.backgroundColor}30;
+        background-color: ${props => props.backgroundColor}100;
         animation: ripple 600ms;
         margin: auto;
     }
