@@ -2,8 +2,14 @@ import styled from 'styled-components'
 import Ripple from './RippleAnimation'
 import React, { useState, useRef} from 'react'
 
-const RadioButtonElement = styled.div`
+interface RadioButtonElementType{
+    fullWidth?: boolean
+}
+
+
+const RadioButtonElement = styled.div<RadioButtonElementType>`
     display: flex;
+    ${props => props.fullWidth ? 'width: 100%;' : ''}
 `
 
 interface RadioButtonType {
@@ -74,13 +80,14 @@ const RadioButton = styled.input<RadioButtonType>`
 interface RadioButtonLabelType{
     disabled?:boolean
 }
+
 const RadioButtonLabel = styled.label<RadioButtonLabelType>`
     color: ${ props => props.disabled ?'rgba(0,0,0,0.4)':'#1a2027'};
     ${ props => props.disabled ?'':'cursor: pointer;'};
-    display: inline-block;
+    display: inline-flex;
     text-transform: capitalize;
+    width: inherit;
 `
-
 
 interface AnimationHoverType {
     isFocus: boolean
@@ -107,20 +114,23 @@ const AnimationHover = styled.span<AnimationHoverType>`
     }
 
     @media (max-width: 480px) {
-        ${props => props.size === "small" ?"width: 7vw; height: 7vw;" : ""}
-        ${props => props.size === "medium" ?"width: 7.5vw; height: 7.5vw;" : ""}
-        ${props => props.size === "large" ?"width: 8vw; height: 8vw;" : ""}
+        ${props => props.size === "small" ?"width: 10vw; height: 10vw;" : ""}
+        ${props => props.size === "medium" ?"width: 10.5vw; height: 10.5vw;" : ""}
+        ${props => props.size === "large" ?"width: 11vw; height: 11vw;" : ""}
     }
 `
 
 interface TextLabelType {
     size?: "small" | "medium" | "large"
+    fullWidth?: boolean
+    labelPosition?: 'left' | 'right'
 }
 
 const TextLabel = styled.span<TextLabelType>`
     font-family: Arial, sans-serif;
     text-transform: capitalize;
     display: inline-block;
+    ${props => props.fullWidth ? `margin: auto ${props.labelPosition === 'right' ? '0vw' : 'auto' } auto ${props.labelPosition === 'left' ? '0vw' : 'auto' };` : 'margin: auto;'}
     ${props => props.size === "small" ?"font-size: 0.55vw;" : ""}
     ${props => props.size === "medium" ?"font-size: 0.7vw;" : ""}
     ${props => props.size === "large" ?"font-size: 0.8vw;" : ""}
@@ -146,9 +156,10 @@ interface RadioType {
     labelPosition?: 'left' | 'right'
     size?: "small" | "medium" | "large"
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    fullWidth?: boolean
 }
 
-const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange, disabled, color = '#6200ee', labelPosition = 'right', size = 'medium'}) =>{
+const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange, disabled, color = '#6200ee', labelPosition = 'right', size = 'medium', fullWidth}) =>{
     const [isFocus, setIsFocus] = useState<boolean>(false)
     const inputRef = useRef<HTMLInputElement>(null)
     
@@ -157,7 +168,6 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
     }
     
     const checkedHandler = (checked: string ): boolean => {
-        
         if( checked === value)
             return true
         return  false
@@ -165,7 +175,9 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
 
 
     return(<>
-            <RadioButtonElement>
+            <RadioButtonElement
+                fullWidth={fullWidth}
+            >
 
                 <RadioButtonLabel 
                     htmlFor={id}
@@ -175,6 +187,8 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                     {labelPosition === 'left' &&
                         <TextLabel 
                             size={size}
+                            fullWidth={fullWidth}
+                            labelPosition={labelPosition}
                         >
                             {label}
                         </TextLabel>
@@ -209,6 +223,8 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                     {labelPosition === 'right' &&
                         <TextLabel
                             size={size}
+                            fullWidth={fullWidth}
+                            labelPosition={labelPosition}
                         >
                             {label}
                         </TextLabel>
