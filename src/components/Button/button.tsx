@@ -152,7 +152,7 @@ interface ButtonElement {
     size?: "small" | "medium" | "large"
     state?: "success" | "error"
     loadingPhase?: boolean
-    onClick: () => void
+    onClick?: () => void
 }
 
 const Button: React.FC<ButtonElement> = ({

@@ -89,7 +89,7 @@ const OutLineLegend = styled.legend<OutLineLegend>`
     overflow: hidden;
     padding: 0;
     height: 0;
-    font-size: ${props => props.sizeLabel === 'normal' ? '0.9vw' : '0.7vw'};
+    font-size: ${props => props.sizeLabel === 'normal' ? '1vw' : '0.7vw'};
     max-width: 100%;
     transition: max-width 100ms cubic-bezier(0.0, 0, 0.2, 1) 50ms;
     white-space: nowrap;      
