@@ -22,7 +22,6 @@ const ButtonContainer = styled.div`
     border-radius: 0.3vw;
     display: inline-block;
     background-color: white;
-    overflow: hidden;
 
     @media (max-width: 480px) {
         border-radius: 0.7vw;
@@ -31,6 +30,8 @@ const ButtonContainer = styled.div`
 
 
 const Contained = styled.button<ButtonStyled>`
+    border-radius: 0.3vw;
+    overflow: hidden;   
     background-color:  ${props => props.backgroundColor ? props.backgroundColor : "#6200ee"};
 	color: ${props => props.color ? props.color : "white"};
 	border: none;
@@ -60,6 +61,7 @@ const Contained = styled.button<ButtonStyled>`
         ${props => props.size === "small" ?"padding: 2vw 4vw; font-size: 3vw;" : ""}
         ${props => props.size === "medium" ?"padding: 2.5vw 5vw; font-size: 3.5vw;" : ""}
         ${props => props.size === "large" ?"padding: 3vw 6vw; font-size: 4vw" : ""}
+        border-radius: 0.7vw;
     }
 `
 const Text = styled.button<ButtonStyled>`
@@ -97,6 +99,7 @@ const Text = styled.button<ButtonStyled>`
 `
 
 const Outlined = styled.button<ButtonStyled>`
+    border-radius: 0.3vw;
     overflow: hidden;
 	color: ${props => props.color ? props.color : "#6200ee"};
     background-color: ${props => props.isFocus ? props.backgroundColor ? `${props.backgroundColor}30 !important` : "#6200ee30 !important" : "#6200ee00" };
@@ -127,6 +130,7 @@ const Outlined = styled.button<ButtonStyled>`
         ${props => props.size === "small" ?"padding: 2vw 4vw; font-size: 3vw;" : ""}
         ${props => props.size === "medium" ?"padding: 2.5vw 5vw; font-size: 3.5vw;" : ""}
         ${props => props.size === "large" ?"padding: 3vw 6vw; font-size: 4vw" : ""}
+        border-radius: 0.7vw;
     }
 `
 

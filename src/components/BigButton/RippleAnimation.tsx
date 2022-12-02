@@ -43,8 +43,8 @@ const Ripple: React.FC<Ripple> = ({backgroundColor = 'white'}) =>{
         const divSize = event.currentTarget.getBoundingClientRect()
         
         const size = divSize.width > divSize.height ? divSize.width : divSize.height
-        const x = event.pageX - divSize.x - divSize.width / 2
-        const y = event.pageY - divSize.y - divSize.width / 2
+        const x = event.clientX - divSize.left- (size / 2)
+        const y = event.clientY - divSize.top - (size / 2) 
 
         setRipples((prevRipples) => [ ...prevRipples, { x, y, size }])
     }
