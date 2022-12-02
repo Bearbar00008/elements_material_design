@@ -182,85 +182,85 @@ const BigButton: React.FC<ButtonElement> = ({
             <ButtonContainer>
                 { variant === "contained" &&
                         <Contained
-                        color = {color} 
-                        backgroundColor = {backgroundColor}
-                        variant = {variant}
-                        disable = {disable}
-                        disableElevation = {disableElevation}
-                        fullWidth = {fullWidth}
-                        type = {type}
-                        size = {size}
-                        state = {state}
-                        isFocus = {isFocus}
-                        isClicked = {isClicked}
-                        loadingPhase = {loadingPhase} 
-                        onClick={ disable === true  || loadingPhase === true ? () => null : onClick }
-                        onFocus = {() => setIsFocus(true) }
-                        onBlur = {() => setIsFocus(false)}
-                        onMouseDown = {() => setIsClicked(true)} 
-                        onMouseUp = {() => {setIsClicked(false); setIsFocus(false)}}
-                        >
-                            <TextButton loadingPhase ={loadingPhase}>{children}</TextButton>
-                            {loadingPhase  &&
-                                    <Loading color="white" />    
+                            color = {color} 
+                            backgroundColor = {backgroundColor}
+                            variant = {variant}
+                            disable = {disable}
+                            disableElevation = {disableElevation}
+                            fullWidth = {fullWidth}
+                            type = {type}
+                            size = {size}
+                            state = {state}
+                            isFocus = {isFocus}
+                            isClicked = {isClicked}
+                            loadingPhase = {loadingPhase} 
+                            onClick={ disable === true  || loadingPhase === true ? () => null : onClick }
+                            onFocus = {() => setIsFocus(true) }
+                            onBlur = {() => setIsFocus(false)}
+                            onMouseDown = {() => setIsClicked(true)} 
+                            onMouseUp = {() => {setIsClicked(false); setIsFocus(false)}}
+                            >
+                                <TextButton loadingPhase ={loadingPhase}>{children}</TextButton>
+                                {loadingPhase  &&
+                                        <Loading color="white" />    
+                                    }
+                                
+                                { disable !== true && loadingPhase !== true && 
+                                    <RippleAnimation backgroundColor="white" />
                                 }
-                            
-                            { disable !== true && loadingPhase !== true && 
-                                <RippleAnimation backgroundColor="white" />
-                            }
-                            
+                                
                         </Contained>
                 }
 
                 { variant === "text" &&
                         <Text
-                        color = {color} 
-                        backgroundColor = {backgroundColor}
-                        variant = {variant}
-                        disable = {disable}
-                        disableElevation = {disableElevation}
-                        fullWidth = {fullWidth}
-                        type = {type}
-                        size = {size}
-                        state = {state}
-                        isFocus = {isFocus}
-                        isClicked = {isClicked}
-                        loadingPhase = {loadingPhase} 
-                        onClick={ disable === true  || loadingPhase === true ? () => null : onClick }
-                        onFocus = {() => setIsFocus(true) }
-                        onBlur = {() => setIsFocus(false)}
-                        onMouseDown = {() => {setIsClicked(true)}}
-                        onMouseUp = {() => {setIsClicked(false); setIsFocus(false)}}
-                        >
-                            <TextButton loadingPhase = {loadingPhase} >{children}</TextButton>
-                            {loadingPhase  &&
-                                <Loading color="#ababab" />    
-                            }
-                            { disable !== true && loadingPhase !== true && 
-                                <RippleAnimation backgroundColor={state ? state === 'success' ? '#2e7d32': '#d32f2f' : backgroundColor} />
-                            }
+                            color = {color} 
+                            backgroundColor = {backgroundColor}
+                            variant = {variant}
+                            disable = {disable}
+                            disableElevation = {disableElevation}
+                            fullWidth = {fullWidth}
+                            type = {type}
+                            size = {size}
+                            state = {state}
+                            isFocus = {isFocus}
+                            isClicked = {isClicked}
+                            loadingPhase = {loadingPhase} 
+                            onClick={ disable === true  || loadingPhase === true ? () => null : onClick }
+                            onFocus = {() => setIsFocus(true) }
+                            onBlur = {() => setIsFocus(false)}
+                            onMouseDown = {() => {setIsClicked(true)}}
+                            onMouseUp = {() => {setIsClicked(false); setIsFocus(false)}}
+                            >
+                                <TextButton loadingPhase = {loadingPhase} >{children}</TextButton>
+                                {loadingPhase  &&
+                                    <Loading color="#ababab" />    
+                                }
+                                { disable !== true && loadingPhase !== true && 
+                                    <RippleAnimation backgroundColor={state ? state === 'success' ? '#2e7d32': '#d32f2f' : backgroundColor} />
+                                }
                         </Text>
                 }
 
                 { variant === "outlined" &&
                         <Outlined
-                        color = {color} 
-                        backgroundColor = {backgroundColor}
-                        variant = {variant}
-                        disable = {disable}
-                        disableElevation = {disableElevation}
-                        fullWidth = {fullWidth}
-                        type = {type}
-                        size = {size}
-                        state = {state}
-                        loadingPhase = {loadingPhase}
-                        isFocus = {isFocus}
-                        isClicked = {isClicked}
-                        onClick={ disable === true  || loadingPhase === true ? () => null : onClick }
-                        onFocus = {() => setIsFocus(true) }
-                        onBlur = {() => setIsFocus(false)}
-                        onMouseDown = {() => {setIsClicked(true)}}
-                        onMouseUp = {() => {setIsClicked(false); setIsFocus(false)}}
+                            color = {color} 
+                            backgroundColor = {backgroundColor}
+                            variant = {variant}
+                            disable = {disable}
+                            disableElevation = {disableElevation}
+                            fullWidth = {fullWidth}
+                            type = {type}
+                            size = {size}
+                            state = {state}
+                            loadingPhase = {loadingPhase}
+                            isFocus = {isFocus}
+                            isClicked = {isClicked}
+                            onClick={ disable === true  || loadingPhase === true ? () => null : onClick }
+                            onFocus = {() => setIsFocus(true) }
+                            onBlur = {() => setIsFocus(false)}
+                            onMouseDown = {() => {setIsClicked(true)}}
+                            onMouseUp = {() => {setIsClicked(false); setIsFocus(false)}}
                         >
                             <TextButton loadingPhase = {loadingPhase} >{children}</TextButton>
                             {loadingPhase  &&
