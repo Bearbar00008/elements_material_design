@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Ripple from './RippleAnimation'
+import { RippleAnimationCenter } from "../utils"
 import React, { useState, useRef} from 'react'
 
 interface RadioButtonElementType{
@@ -217,7 +217,7 @@ const Radio: React.FC<RadioType> = ({label, name , id, value, checked, onChange,
                         />
                     
                         { disabled !== true && 
-                            <Ripple backgroundColor={color} />  
+                            <RippleAnimationCenter backgroundColor={color} />  
                         }
                     </AnimationHover>
                     {labelPosition === 'right' &&

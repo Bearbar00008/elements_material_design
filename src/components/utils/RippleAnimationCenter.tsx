@@ -17,7 +17,7 @@ const Animation = styled.div<Animation>`
         border-radius: 100%;
         position: absolute;
         opacity: 0.6;
-        background-color: ${props => props.backgroundColor}100;
+        background-color: ${props => props.backgroundColor}30;
         animation: ripple 600ms;
         margin: auto;
     }
@@ -35,19 +35,17 @@ interface Ripple {
     backgroundColor?: string
 }
 
-const Ripple: React.FC<Ripple> = ({backgroundColor = '#6200ee'}) =>{
+const RippleCenter: React.FC<Ripple> = ({backgroundColor = '#6200ee'}) =>{
 
-    const [ripples, setRipples] = useState<{x: number, y: number, size: number} []>([])
+    const [ripples, setRipples] = useState<{size: number} []>([])
 
     const addRipple = (event: MouseEvent) => {
 
         const divSize = event.currentTarget.getBoundingClientRect()
         
         const size = divSize.width > divSize.height ? divSize.width : divSize.height
-        const x = event.pageX - divSize.x - divSize.width / 2
-        const y = event.pageY - divSize.y - divSize.width / 2
-
-        setRipples((prevRipples) => [ ...prevRipples, { x, y, size }])
+      
+        setRipples((prevRipples) => [ ...prevRipples, { size }])
     }
 
 
@@ -71,4 +69,4 @@ const Ripple: React.FC<Ripple> = ({backgroundColor = '#6200ee'}) =>{
     </>
 )}
 
-export default Ripple
+export default RippleCenter

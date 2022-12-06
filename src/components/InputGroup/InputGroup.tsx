@@ -13,7 +13,7 @@ export const Data = createContext<ContextData>(data)
 type HEX = `#${string}`
 
 export interface InputGroupType {
-    type: 'radio' | 'checkbox'
+    type: 'radio' | 'checkbox'  | 'switch'
     name: string
     defaultValue?: string
     children: JSX.Element [] | JSX.Element

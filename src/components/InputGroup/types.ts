@@ -2,7 +2,7 @@ type HEX = `#${string}`
 
 
 export interface ContextData {
-    type: 'radio' | 'checkbox'
+    type: 'radio' | 'checkbox' | 'switch'
     name: string
     defaultValue?: string
     color?: HEX

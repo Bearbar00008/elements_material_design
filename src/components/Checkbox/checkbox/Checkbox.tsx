@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React, { useRef, useState } from "react"
-import Ripple from "./RippleAnimation"
+import { RippleAnimationCenter } from "../../utils"
 
 
 interface CheckboxWrapperType{
@@ -224,7 +224,7 @@ const Checkbox: React.FC<CheckboxType> = ({label, name , id, value, checked, onC
                     
 
                         { disabled !== true && 
-                            <Ripple backgroundColor={checkedHandler(checked) === true ? '#000000' : color } />  
+                            <RippleAnimationCenter backgroundColor={checkedHandler(checked) === true ? '#000000' : color } />  
                         }
 
                     </AnimationHover>

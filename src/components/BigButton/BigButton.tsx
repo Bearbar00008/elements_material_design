@@ -1,7 +1,6 @@
 import styled  from "styled-components"
 import React, { useState } from "react"
-import RippleAnimation from "./RippleAnimation"
-import Loading from "./Loading"
+import {RippleAnimation, Loading} from "../utils"
 
 interface ButtonStyled {
     color?: string 

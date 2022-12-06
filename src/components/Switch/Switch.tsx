@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React, { useRef, useState } from 'react'
-import RippleAnimation from "./RippleAnimation"
+import { RippleAnimationCenter } from "../utils"
 
 interface SwitchWrapperType{
     fullWidth?: boolean
@@ -232,7 +232,7 @@ const Switch: React.FC<SwitchType> = ({label, name , id, value, checked, onChang
                             </SwitchBall>
 
                             {disabled !== true &&
-                                <RippleAnimation backgroundColor={checkedHandler(checked) === true ? '#000000' : color } />
+                                <RippleAnimationCenter backgroundColor={checkedHandler(checked) === true ? '#000000' : color } />
                             }
                         </AnimationHover>
 
