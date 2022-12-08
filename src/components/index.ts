@@ -4,4 +4,5 @@ export { default as Radio } from './Radio'
 export { default as Checkbox } from './Checkbox/checkbox'
 export { default as BigButton } from './BigButton'
 export { default as Switch } from './Switch'
+export { default as Select } from './Select'
 export * from "./InputGroup"

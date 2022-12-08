@@ -1,6 +1,6 @@
 {
   "name": "@bearbar00008/elements_material_design",
-  "version": "0.7.2",
+  "version": "0.8.9",
   "description": "A simple template for a custom React component library",
   "scripts": {
     "rollup": "rollup -c"
@@ -32,7 +32,5 @@
     "react": ">= 18",
     "react-dom": ">= 18",
     "styled-components": ">= 4"
-  },
-  "dependencies": {
   }
 }
