@@ -6,5 +6,6 @@ export { default as BigButton } from './BigButton'
 export { default as Switch } from './Switch'
 export { default as Select } from './Select'
 export { default as NotificationBandage } from './NotificationBandage'
+export { default as OnlineBandage } from './OnlineBandage'
 export * from './Avatar'
 export * from "./InputGroup"
