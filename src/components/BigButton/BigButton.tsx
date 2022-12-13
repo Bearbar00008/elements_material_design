@@ -2,6 +2,20 @@ import styled  from "styled-components"
 import React, { useState } from "react"
 import {RippleAnimation, Loading} from "../utils"
 
+interface ButtonContainerType{
+    fullWidth?: boolean
+}
+
+const ButtonContainer = styled.div<ButtonContainerType>`
+    border-radius: 0.3vw;
+    display: inline-block;
+    background-color: white;
+    ${props => props.fullWidth ? "width: 100% !important;": ""}
+
+    @media (max-width: 480px) {
+        border-radius: 0.7vw;
+    }
+`
 interface ButtonStyled {
     color?: string 
     backgroundColor?: string
@@ -16,17 +30,6 @@ interface ButtonStyled {
     isClicked: boolean
     loadingPhase?: boolean
 }
-
-const ButtonContainer = styled.div`
-    border-radius: 0.3vw;
-    display: inline-block;
-    background-color: white;
-
-    @media (max-width: 480px) {
-        border-radius: 0.7vw;
-    }
-`
-
 
 const Contained = styled.button<ButtonStyled>`
     border-radius: 0.3vw;
@@ -64,6 +67,7 @@ const Contained = styled.button<ButtonStyled>`
     }
 `
 const Text = styled.button<ButtonStyled>`
+    border-radius: 0.3vw;
     overflow: hidden;
 	color: ${props => props.color ? props.color : "#6200ee"};
     background-color: ${props => props.isFocus ? props.backgroundColor ? `${props.backgroundColor}30 !important` : "#6200ee30 !important" : "#6200ee00" };
@@ -94,6 +98,7 @@ const Text = styled.button<ButtonStyled>`
         ${props => props.size === "small" ?"padding: 2vw 4vw; font-size: 3vw;" : ""}
         ${props => props.size === "medium" ?"padding: 2.5vw 5vw; font-size: 3.5vw;" : ""}
         ${props => props.size === "large" ?"padding: 3vw 6vw; font-size: 4vw" : ""}
+        border-radius: 0.7vw;
     }
 `
 
@@ -176,7 +181,7 @@ const BigButton: React.FC<ButtonElement> = ({
         const [isFocus, setIsFocus] = useState<boolean>(false)
         
         return(<>
-            <ButtonContainer>
+            <ButtonContainer fullWidth = {fullWidth}>
                 { variant === "contained" &&
                         <Contained
                         color = {color} 

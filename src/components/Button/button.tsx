@@ -2,6 +2,23 @@ import styled  from "styled-components"
 import React, { useState } from "react"
 import {RippleAnimation, Loading} from "../utils"
 
+
+interface ButtonContainerType {
+    fullWidth?: boolean
+}
+
+const ButtonContainer = styled.div<ButtonContainerType>`
+    border-radius: 0.3vw;
+    display: inline-block;
+    background-color: white;
+    ${props => props.fullWidth ? "width: 100% !important;": ""}
+    
+    
+    @media (max-width: 480px) {
+        border-radius: 1vw;
+    }
+`
+
 interface ButtonStyled {
     color?: string 
     backgroundColor?: string
@@ -16,17 +33,6 @@ interface ButtonStyled {
     isClicked: boolean
     loadingPhase?: boolean
 }
-
-const ButtonContainer = styled.div`
-    border-radius: 0.3vw;
-    display: inline-block;
-    background-color: white;
-    
-    
-    @media (max-width: 480px) {
-        border-radius: 1vw;
-    }
-`
     
 const Contained = styled.button<ButtonStyled>`
     overflow: hidden;
@@ -155,7 +161,7 @@ interface ButtonElement {
     size?: "small" | "medium" | "large"
     state?: "success" | "error"
     loadingPhase?: boolean
-    onClick: () => void
+    onClick?: () => void
 }
 
 const Button: React.FC<ButtonElement> = ({
@@ -177,7 +183,9 @@ const Button: React.FC<ButtonElement> = ({
         const [isFocus, setIsFocus] = useState<boolean>(false)
         
         return(<>
-            <ButtonContainer>
+            <ButtonContainer
+                fullWidth = {fullWidth}
+            >
                 { variant === "contained" &&
                         <Contained
                             color = {color} 
