@@ -408,6 +408,7 @@ interface TexField {
     variant?: "standard" | "contained" | "outlined"
     size?: "small" | "normal"
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    handleBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const TextField: React.FC<TexField> = ({
@@ -424,7 +425,8 @@ const TextField: React.FC<TexField> = ({
     disabled,
     variant = 'standard',
     size = 'normal',
-    state
+    state,
+    handleBlur
 }) =>{
 
     const inputRef = useRef<HTMLInputElement>(null)
@@ -445,13 +447,21 @@ const TextField: React.FC<TexField> = ({
         }
 
     },[focus, value])
-  
 
+    
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValueLength(e.target.value.length)
 
         if(onChange){
             onChange(e)
+        }
+    }
+
+    const onBlurHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFocus(false)
+
+        if(handleBlur){
+            handleBlur(e)
         }
     }
 
@@ -466,7 +476,7 @@ const TextField: React.FC<TexField> = ({
                         <TextFieldElementOutLined
                             ref = {inputRef}
                             onFocus = {() => setFocus(true)}
-                            onBlur = {() => setFocus(false)}
+                            onBlur = {onBlurHandler}
                             onChange = { onChangeHandler}
                             maxLength = {maxLength}
                             value = {value}
@@ -524,7 +534,7 @@ const TextField: React.FC<TexField> = ({
                             sizeInput={size}
                             fullWidth = {fullWidth}
                             onFocus = {() => setFocus(true)}
-                            onBlur = {() => setFocus(false)}
+                            onBlur = {onBlurHandler}
                             onChange = { onChangeHandler}
                             maxLength = {maxLength}
                             value = {value}
@@ -567,7 +577,7 @@ const TextField: React.FC<TexField> = ({
                                 sizeInput={size}
                                 fullWidth = {fullWidth}
                                 onFocus = {() => setFocus(true)}
-                                onBlur = {() => setFocus(false)}
+                                onBlur = {onBlurHandler}
                                 onChange = { onChangeHandler}
                                 maxLength = {maxLength}
                                 value = {value}
