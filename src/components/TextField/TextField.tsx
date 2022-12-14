@@ -407,6 +407,7 @@ interface TexField {
     disabled?: boolean
     variant?: "standard" | "contained" | "outlined"
     size?: "small" | "normal"
+    type?: 'text' | 'password'
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
     handleBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -426,7 +427,8 @@ const TextField: React.FC<TexField> = ({
     variant = 'standard',
     size = 'normal',
     state,
-    handleBlur
+    handleBlur,
+    type='text'
 }) =>{
 
     const inputRef = useRef<HTMLInputElement>(null)
@@ -482,7 +484,7 @@ const TextField: React.FC<TexField> = ({
                             value = {value}
                             id = {id}
                             name = {name}
-                            type = 'text'
+                            type = {type}
                             fullWidth = {fullWidth}
                             autoComplete = "off"
                             disabled = {disabled}
@@ -542,7 +544,7 @@ const TextField: React.FC<TexField> = ({
                             name = {name}
                             autoComplete = "off"
                             disabled = {disabled}
-                            type = 'text'
+                            type = {type}
                         />
 
                         <TextFieldLabelContained 
@@ -585,7 +587,7 @@ const TextField: React.FC<TexField> = ({
                                 name = {name}
                                 autoComplete = "off"
                                 disabled = {disabled}
-                                type = 'text'
+                                type = {type}
                             />
 
                             <TextFieldLabelStandard 

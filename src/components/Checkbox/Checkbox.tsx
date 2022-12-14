@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React, { useRef, useState } from "react"
-import { RippleAnimationCenter } from "../../utils"
+import { RippleAnimationCenter } from "./../utils"
 
 
 interface CheckboxWrapperType{

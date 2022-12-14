@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { Data } from "../InputGroup";
 import Radio from "../../Radio";
-import Checkbox from "../../Checkbox/checkbox/Checkbox";
+import Checkbox from "../../Checkbox/Checkbox";
 import Switch from "../../Switch";
 import { ContextData } from "../types"
 
