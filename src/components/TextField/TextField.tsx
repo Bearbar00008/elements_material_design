@@ -7,7 +7,7 @@ interface TextFieldElementWrapper {
 
 const TextFieldElementWrapper = styled.div<TextFieldElementWrapper>`
     display: inline-block;
-    ${ props => props.fullWidth ? 'width: 99%;' : ''}
+    ${ props => props.fullWidth ? 'width: 100%;' : ''}
 `
 
 
@@ -15,6 +15,7 @@ const TextFieldElementWrapper = styled.div<TextFieldElementWrapper>`
 const TextFieldWrapperOutLined = styled.div`
     position: relative;
     padding: 0vw;
+    width: inherit;
 `
 
 interface TextFieldElement {
@@ -23,18 +24,15 @@ interface TextFieldElement {
 }
 
 const TextFieldElementOutLined = styled.input<TextFieldElement>`
-    position: absolute;
-    left: 0vw;
-    top: 0vw;
     all: unset;
+    box-sizing: border-box;
     padding: ${props => props.sizeInput === 'normal' ? '0.8vw 1vw' : '0.5vw 0.7vw'};
     text-align: left;
     font-size: ${props => props.sizeInput === 'normal' ? '1vw' : '0.7vw'};
     z-index: 5;
-    ${ props => props.fullWidth ? "width: 98%;" : ''} 
+    ${ props => props.fullWidth ? "width: inherit;" : ''} 
     font-family: Arial, sans-serif;
     display: block;
-
     @media (max-width: 480px) {
         padding: ${props => props.sizeInput === 'normal' ? '3vw 5vw' : '2.5vw 4.5vw'};
         font-size: ${props => props.sizeInput === 'normal' ? '3.5vw' : '3vw'};
@@ -51,6 +49,7 @@ interface TextFieldWrapper {
 
 const OutLineFieldset = styled.fieldset<TextFieldWrapper>`
     position: absolute;
+    box-sizing: border-box;
     z-index: 0;
     top: 0vw;
     left: 0vw;
@@ -152,7 +151,7 @@ const TextFieldWrapperContained = styled.div<TextFieldWrapperContainer>`
     border-radius: 0.3vw 0.3vw 0vw 0vw;
     background-color: ${props => props.isFocus ? '#80808040' : '#80808020'};
     ${props => props.disabled ? 'background-color: #80808050 !important;' : '' }
-    width: 99%;
+    width: 100%;
     transition: background-color 0.1s ease-in-out;
     z-index: 0;
     display: inline-block;
@@ -196,13 +195,14 @@ interface TextFieldElementContained {
 
 const TextFieldElementContained = styled.input<TextFieldElementContained>`
     all: unset;
+    box-sizing: border-box;
     padding: ${props => props.sizeInput === 'normal' ? '1.2vw 1vw 0.4vw 1vw ' : '0.9vw 0.7vw 0.3vw 0.7vw'};
     text-align: left;
     font-size: ${props => props.sizeInput === 'normal' ? '1vw' : '0.7vw'};
     z-index: 1;
     background-color: #f5f5f500;
     font-family: Arial, sans-serif;
-    ${ props => props.fullWidth ? "width: 98%;" : ''} 
+    ${ props => props.fullWidth ? "width: 100%;" : ''} 
     display: block;
     @media (max-width: 480px) {
         padding: ${props => props.sizeInput === 'normal' ? '4.25vw 5vw 1.25vw 5vw' : '3.5vw 4.5vw 1vw 4.5vw'};
@@ -257,7 +257,7 @@ interface TextFieldWrapperStandard {
 const TextFieldWrapperStandard = styled.div<TextFieldWrapperStandard>`
     position: relative;
     border-radius: 0.3vw 0.3vw 0vw 0vw;
-    width: 99%;
+    width: 100%;
     transition: background-color 0.1s ease-in-out;
     z-index: 0;
     display: inline-block;
@@ -267,7 +267,7 @@ const TextFieldWrapperStandard = styled.div<TextFieldWrapperStandard>`
         content: '';
         position: absolute;
         width: 100%;
-        height: 1.2px;
+        height: 1px;
         background-color: rgba(0,0,0,0.6);
         ${props => props.state === 'success' ? 'background-color: #2e7d32 !important;': ''}
         ${props => props.state === 'error' || props.error ? 'background-color: #d32f2f !important;': ''}
@@ -297,14 +297,16 @@ interface TextFieldElementStandard {
 }
 
 const TextFieldElementStandard = styled.input<TextFieldElementStandard>`
+
     all: unset;
+    box-sizing: border-box;
     padding: ${props => props.sizeInput === 'normal' ? '1.2vw 1vw 0.4vw 1vw ' : '0.9vw 0.7vw 0.3vw 0.7vw'};
     text-align: left;
     font-size: ${props => props.sizeInput === 'normal' ? '1vw' : '0.7vw'};
     z-index: 1;
     background-color: #f5f5f500;
     font-family: Arial, sans-serif;
-    ${ props => props.fullWidth ? "width: 98%;" : ''} 
+    ${ props => props.fullWidth ? "width: 100%;" : ''} 
     display: block;
     @media (max-width: 480px) {
         padding: ${props => props.sizeInput === 'normal' ? '4.25vw 5vw 1.25vw 5vw' : '3.5vw 4.5vw 1vw 4.5vw'};
