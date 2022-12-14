@@ -23,7 +23,7 @@ interface ButtonStyled {
     disable?: boolean
     disableElevation?: boolean
     fullWidth?: boolean
-    type?: "submit"
+    type?: "submit" | 'button'
     size?: "small" | "medium" | "large"
     state?: "success" | "error"
     isFocus: boolean
@@ -155,7 +155,7 @@ interface ButtonElement {
     disable?: boolean
     disableElevation?: boolean
     fullWidth?: boolean
-    type?: "submit"
+    type?: "submit" | 'button'
     size?: "small" | "medium" | "large"
     state?: "success" | "error"
     loadingPhase?: boolean
