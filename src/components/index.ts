@@ -7,5 +7,6 @@ export { default as Switch } from './Switch'
 export { default as Select } from './Select'
 export { default as NotificationBandage } from './NotificationBandage'
 export { default as OnlineBandage } from './OnlineBandage'
+export { default as CheckAnimation} from './CheckAnimation'
 export * from './Avatar'
 export * from "./InputGroup"
