@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import styled, {keyframes} from "styled-components"
+import React from "react"
 
 
 const rotate = keyframes`
@@ -103,12 +103,10 @@ const CheckAnimation: React.FC<CheckAnimationType> = ({
     size = 'medium'
 }) =>{
 
-    const [clicked, setClicked] = useState<boolean>(false)
 
     return(<>
         <CheckAnimationElement 
-            onClick ={ () => setClicked(prev => !prev)}
-            clicked ={clicked} 
+            clicked ={checked} 
             color={success === true ? '#2e7d32' : color}
             size={size}
         />
