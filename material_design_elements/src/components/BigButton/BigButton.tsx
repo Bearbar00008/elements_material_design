@@ -244,7 +244,8 @@ const BigButton: React.FC<ButtonElement> = ({
                         </Text>
                 }
 
-                { variant === "outlined" &&
+
+                { variant === "outlined" && 
                         <Outlined
                         color = {color} 
                         backgroundColor = {backgroundColor}
