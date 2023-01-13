@@ -24,3 +24,5 @@ jobs:
       - name: Publishing
         working-directory: ./material_design_elements
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
