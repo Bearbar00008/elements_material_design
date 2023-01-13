@@ -1,0 +1,26 @@
+name: Publish Material Design Elements to npm
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - SDK/**
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: https://npm.pkg.github.com
+      - name: installing dependencies
+        working-directory: ./material_design_elements
+        run: npm i
+      - name: Building
+        working-directory: ./material_design_elements
+        run: tsc
+      - name: Publishing
+        working-directory: ./material_design_elements
+        run: npm publish
