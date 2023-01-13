@@ -1,6 +1,6 @@
 {
   "name": "@bearbar00008/elements_material_design",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "description": "A simple template for a custom React component library",
   "scripts": {
     "rollup": "rollup -c"
@@ -17,6 +17,7 @@
     "rollup-plugin-dts": "^4.0.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.4.1",
     "typescript": "^4.4.4"
   },
   "main": "dist/cjs/index.js",

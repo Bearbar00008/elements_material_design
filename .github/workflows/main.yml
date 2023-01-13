@@ -20,7 +20,7 @@ jobs:
         run: npm i
       - name: Building
         working-directory: ./material_design_elements
-        run: tsc
+        run: npm run rollup
       - name: Publishing
         working-directory: ./material_design_elements
         run: npm publish
