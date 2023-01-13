@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - SDK/**
+      - material_design_elements/**
 jobs:
   build:
     runs-on: ubuntu-latest
